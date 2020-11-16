@@ -1,0 +1,103 @@
+﻿@model Giftshop.Application.Models.ShoppingCartViewModel
+@using Giftshop.Application.Models.Enumerations
+@using Giftshop.Application.Extensions
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container-fluid">
+    <form asp-action="Edit" class="card">
+        <div class="card-header">
+            <div class="text-right font-italic">
+                <h5 class="float-right">#@Model.Id</h5>
+                <h5 class="float-left">Edit</h5>
+            </div>
+        </div>
+        <div class="card-body">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row mb-2">
+                <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                    <label asp-for="TotalPrice" class="control-label"></label>
+                </div>
+                <div class="col-sm-10 float-right">
+                    <input asp-for="TotalPrice" class="form-control" readonly />
+                    <span asp-validation-for="TotalPrice" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                    <label asp-for="Currency" class="control-label"></label>
+                </div>
+                <div class="col-sm-10 float-right">
+                    <input asp-for="Currency" class="form-control" readonly />
+                    <span asp-validation-for="Currency" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                    <label asp-for="Comment" class="control-label"></label>
+                </div>
+                <div class="col-sm-10 float-right">
+                    <textarea asp-for="Comment" class="form-control"></textarea>
+                    <span asp-validation-for="Comment" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                    <label asp-for="PaymentMethod" class="control-label"></label>
+                </div>
+                <div class="col-sm-10 float-right">
+                    <select asp-for="PaymentMethod" class="form-control" asp-items="Html.GetEnumSelectList<PaymentMethod>()">
+                        <option value="">Please select payment method</option>
+                    </select>
+                    <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                    <label asp-for="Status" class="control-label"></label>
+                </div>
+                <div class="col-sm-10 float-right">
+                    <select asp-for="Status" class="form-control" asp-items="Html.GetEnumSelectList<ShoppingCartStatus>()">
+                        <option value="">Please select status</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                    <label asp-for="UserId" class="control-label"></label>
+                </div>
+                <div class="col-sm-10 float-right">
+                    <select asp-for="UserId" class="form-control" asp-items="Model.User.ToSelect()"></select>
+                    <span asp-validation-for="UserId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                    <label asp-for="DeliveryAddressId" class="control-label"></label>
+                </div>
+                <div class="col-sm-10 float-right">
+                    <select asp-for="DeliveryAddressId" class="form-control" asp-items="Model.UserAddresses.ToSelect()">
+                        <option value="">Please select address</option>
+                    </select>
+                    <span asp-validation-for="DeliveryAddressId" class="text-danger"></span>
+                </div>
+            </div>
+            <input type="hidden" asp-for="Id" />
+        </div>
+        <div class="card-footer">
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary float-right" style="width: 120px" />
+                <a asp-action="Index" class="btn btn-primary float-left" style="width: 120px">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

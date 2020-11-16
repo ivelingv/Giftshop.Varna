@@ -1,0 +1,64 @@
+﻿@model Giftshop.Application.Models.UserViewModel
+@using Giftshop.Application.Models.Enumerations
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<form asp-action="Edit" class="card">
+    <div class="card-header">
+        <h5>Edit @Model.Name</h5>
+    </div>
+    <div class="card-body">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row mb-2">
+            <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                <label asp-for="Username" class="control-label"></label>
+            </div>
+            <div class="col-sm-10 float-right">
+                <input asp-for="Username" class="form-control"></input>
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                <label asp-for="Name" class="control-label"></label>
+            </div>
+            <div class="col-sm-10 float-right">
+                <input asp-for="Name" class="form-control"></input>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                <label asp-for="Status" class="control-label"></label>
+            </div>
+            <div class="col-sm-10 float-right">
+                <select asp-for="Status" class="form-control" asp-items="Html.GetEnumSelectList<UserStatus>()">
+                    <option value="">Please select status</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                <label asp-for="Type" class="control-label"></label>
+            </div>
+            <div class="col-sm-10 float-right">
+                <select asp-for="Type" class="form-control" asp-items="Html.GetEnumSelectList<UserType>()">
+                    <option value="">Please select type</option>
+                </select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <input type="hidden" asp-for="Id"/>
+        <input type="hidden" asp-for="Password"/>
+        <a asp-action="Index" class="btn btn-primary float-left" style="width:120px">Back to List</a>
+        <input type="submit" value="Save" class="btn btn-primary float-right" style="width:120px" />
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

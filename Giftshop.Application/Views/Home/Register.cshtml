@@ -1,0 +1,62 @@
+﻿@model Giftshop.Application.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<div style=" margin-top: 20%; align-items: center; justify-items: center; text-align: center; display: grid;">
+    <form asp-action="Register" class="card"  style="width:500px">
+        <div class="card-header">
+            <h3>Client Registration</h3>
+        </div>
+        <div class="card-body">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row mb-2">
+                <div class="col-sm-5 float-left pt-2 font-weight-bold text-left">
+                    <label asp-for="Username" class="control-label"></label>
+                </div>
+                <div class="col-sm-7 float-right">
+                    <input asp-for="Username" class="form-control" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-sm-5 float-left pt-2 font-weight-bold text-left">
+                    <label asp-for="Password" class="control-label"></label>
+                </div>
+                <div class="col-sm-7 float-right">
+                    <input asp-for="Password" type="password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-sm-5 float-left pt-2 font-weight-bold text-left">
+                    <label asp-for="ConfirmPassword" class="control-label"></label>
+                </div>
+                <div class="col-sm-7 float-right">
+                    <input asp-for="ConfirmPassword" type="password" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-sm-5 float-left pt-2 font-weight-bold text-left">
+                    <label asp-for="Name" class="control-label"></label>
+                </div>
+                <div class="col-sm-7 float-right">
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary float-right" />
+                <a asp-action="Index" class="btn btn-primary float-left">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

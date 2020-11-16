@@ -1,0 +1,58 @@
+﻿@model Giftshop.Application.Models.UserAddressViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="card">
+    <div class="card-header">
+        <div class="text-right font-italic">
+            <h5 class="float-right">#@Model.Id</h5>
+            <h5 class="float-left">Details</h5>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="col-sm-12">
+            <div class="col-sm-2 float-left font-weight-bold">
+                @Html.DisplayNameFor(model => model.Country)
+            </div>
+            <div class="col-sm-10  float-left">
+                @Html.DisplayFor(model => model.Country)
+            </div>
+            <div class="col-sm-2 float-left font-weight-bold">
+                @Html.DisplayNameFor(model => model.City)
+            </div>
+            <div class="col-sm-10  float-left">
+                @Html.DisplayFor(model => model.City)
+            </div>
+            <div class="col-sm-2 float-left font-weight-bold">
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </div>
+            <div class="col-sm-10  float-left">
+                @Html.DisplayFor(model => model.PostalCode)
+            </div>
+            <div class="col-sm-2 float-left font-weight-bold">
+                @Html.DisplayNameFor(model => model.AddressLine1)
+            </div>
+            <div class="col-sm-10  float-left">
+                @Html.DisplayFor(model => model.AddressLine1)
+            </div>
+            <div class="col-sm-2 float-left font-weight-bold">
+                @Html.DisplayNameFor(model => model.AddressLine2)
+            </div>
+            <div class="col-sm-10  float-left">
+                @Html.DisplayFor(model => model.AddressLine2)
+            </div>
+            <div class="col-sm-2 float-left font-weight-bold">
+                @Html.DisplayNameFor(model => model.AddressLine3)
+            </div>
+            <div class="col-sm-10  float-left">
+                @Html.DisplayFor(model => model.AddressLine3)
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a asp-action="Index" asp-route-id="@Model.UserId"  class="btn btn-primary float-left" style="width: 120px">Back to List</a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" style="width: 120px" class="btn btn-primary float-right mr-2">Edit</a>
+    </div>
+
+</div>

@@ -1,0 +1,73 @@
+﻿@model Giftshop.Application.Models.ProductViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form asp-action="Create" class="card">
+    <div class="card-header">
+        <div class="text-right font-italic">
+            <h5 class="float-right">#N/A</h5>
+            <h5 class="float-left">Create</h5>
+        </div>
+    </div>
+    <div class="card-body">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row mb-2">
+            <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                <label asp-for="Title" class="control-label"></label>
+            </div>
+            <div class="col-sm-10 float-right">
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                <label asp-for="Description" class="control-label"></label>
+            </div>
+            <div class="col-sm-10 float-right">
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                <label asp-for="Price" class="control-label"></label>
+            </div>
+            <div class="col-sm-10 float-right">
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                <label asp-for="Currency" class="control-label"></label>
+            </div>
+            <div class="col-sm-10 float-right">
+                <input asp-for="Currency" class="form-control" />
+                <span asp-validation-for="Currency" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-sm-2 float-left pt-2 font-weight-bold ">
+                <label asp-for="Image" class="control-label"></label>
+            </div>
+            <div class="col-sm-10 float-right">
+                <input asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <input type="hidden" asp-for="CategoryId" />
+        <input type="hidden" asp-for="UserId"/>
+        <input type="hidden" asp-for="IsActive"/>
+        <a asp-action="Index" asp-controller="Products" asp-route-id="@Model.CategoryId" class="btn btn-primary float-left" style="width: 120px">Back to List</a>
+        <input type="submit" value="Save" class="btn btn-primary float-right" style="width:120px" />
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

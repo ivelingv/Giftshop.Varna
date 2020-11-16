@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Giftshop.Application.Models.UserAddressViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card">
+    
+    <div class="card-header">
+        <h3 class="float-left">Addresses</h3>
+        <a asp-controller="Addresses" asp-action="Create" asp-route-id="@ViewBag.UserId" class="btn btn-primary float-right" >Create</a>
+        <a asp-controller="Users" asp-action="Details" asp-route-id="@ViewBag.UserId" class="btn btn-primary float-right mr-2" >Back</a>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Country)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.City)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PostalCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AddressLine1)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AddressLine2)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AddressLine3)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostalCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddressLine1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddressLine2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddressLine3)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        Total: @Model.Count()
+    </div>
+</div>
