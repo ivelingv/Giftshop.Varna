@@ -82,3 +82,8 @@ table > tbody > tr > td > a {
     margin-right: 5px;
     float: right !important;
 }
+
+.validation-summary-errors ul {
+    list-style: none;
+    padding: 0px;
+}

@@ -111,20 +111,21 @@ namespace Giftshop.Application.Controllers
                 Username = model.Username,
             });
 
-            if (result.Token != null)
+            if (result?.Token == null)
             {
-                Response.Cookies.Append("AuthCookie", result.Token, new CookieOptions
-                {
-                    HttpOnly = true,
-                    SameSite = SameSiteMode.Lax,
-                    Domain = Request.PathBase,
-                    Expires = DateTime.Now.AddHours(1),
-                });
-
-                return RedirectToAction(nameof(Index), "ShoppingCarts");
+                ModelState.AddModelError("", "Invalid Username or Password");
+                return View();
             }
 
-            return View();
+            Response.Cookies.Append("AuthCookie", result.Token, new CookieOptions
+            {
+                HttpOnly = true,
+                SameSite = SameSiteMode.Lax,
+                Domain = Request.PathBase,
+                Expires = DateTime.Now.AddHours(1),
+            });
+
+            return RedirectToAction(nameof(Index), "ShoppingCarts");   
         }
 
         [HttpPost]
@@ -137,20 +138,22 @@ namespace Giftshop.Application.Controllers
                 Username = model.Username,
             });
 
-            if (result.Token != null)
-            {
-                Response.Cookies.Append("AuthCookie", result.Token, new CookieOptions
-                {
-                    HttpOnly = true,
-                    SameSite = SameSiteMode.Lax,
-                    Domain = Request.PathBase,
-                    Expires = DateTime.Now.AddHours(1),
-                });
 
-                return RedirectToAction(nameof(Index), "ShoppingCarts");
+            if (result?.Token == null)
+            {
+                ModelState.AddModelError("", "Invalid Username or Password");
+                return View();
             }
 
-            return View();
+            Response.Cookies.Append("AuthCookie", result.Token, new CookieOptions
+            {
+                HttpOnly = true,
+                SameSite = SameSiteMode.Lax,
+                Domain = Request.PathBase,
+                Expires = DateTime.Now.AddHours(1),
+            });
+
+            return RedirectToAction(nameof(Index), "ShoppingCarts");
         }
     }
 }

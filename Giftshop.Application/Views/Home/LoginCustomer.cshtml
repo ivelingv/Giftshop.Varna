@@ -8,10 +8,9 @@
     <form asp-action="LoginCustomer" class="card" style="width:500px">
         <div class="card-header">
             <h3>Customer</h3>
-            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         </div>
         <div class="card-body">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="row mb-2">
                 <div class="col-sm-5 float-left pt-2 font-weight-bold text-left">
                     <label asp-for="Username" class="control-label"></label>
