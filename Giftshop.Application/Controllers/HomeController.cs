@@ -33,7 +33,7 @@ namespace Giftshop.Application.Controllers
             if (HttpContext.User.Identity.IsAuthenticated 
                 && HttpContext.User.IsInRole(AdministratorRole))
             {
-                return RedirectToAction(nameof(Index), ShoppingCards);
+                return RedirectToAction(nameof(Index), ShoppingCarts);
             }
 
             return View();
@@ -46,7 +46,7 @@ namespace Giftshop.Application.Controllers
             if (HttpContext.User.Identity.IsAuthenticated 
                 && HttpContext.User.IsInRole(CustomerRole))
             {
-                return RedirectToAction(nameof(Index), ShoppingCards);
+                return RedirectToAction(nameof(Index), ShoppingCarts);
             }
 
             return View();
@@ -85,7 +85,7 @@ namespace Giftshop.Application.Controllers
                     Expires = DateTime.Now.AddHours(1),
                 });
 
-                return RedirectToAction(nameof(Index), ShoppingCards);
+                return RedirectToAction(nameof(Index), ShoppingCarts);
             }
 
             return View();
@@ -129,7 +129,7 @@ namespace Giftshop.Application.Controllers
                 Expires = DateTime.Now.AddHours(1),
             });
 
-            return RedirectToAction(nameof(Index), ShoppingCards);   
+            return RedirectToAction(nameof(Index), ShoppingCarts);   
         }
 
         [HttpPost]
@@ -157,7 +157,7 @@ namespace Giftshop.Application.Controllers
                 Expires = DateTime.Now.AddHours(1),
             });
 
-            return RedirectToAction(nameof(Index), ShoppingCards);
+            return RedirectToAction(nameof(Index), ShoppingCarts);
         }
     }
 }

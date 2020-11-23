@@ -10,7 +10,7 @@
 
         public static class Controllers
         {
-            public const string ShoppingCards = "ShoppingCards";
+            public const string ShoppingCarts = "ShoppingCarts";
         }
     }
 }
