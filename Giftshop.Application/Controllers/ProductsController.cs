@@ -7,10 +7,11 @@ using Giftshop.Application.Contracts;
 using Giftshop.Application.Services;
 using Giftshop.Application.Contracts.Models;
 using Microsoft.AspNetCore.Authorization;
+using static Giftshop.Application.Constants;
 
 namespace Giftshop.Application.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = AdministratorRole)]
     public class ProductsController : Controller
     {
         private readonly IProductsService _service;

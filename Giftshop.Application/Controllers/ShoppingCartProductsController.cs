@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Giftshop.Application.Models;
 using Giftshop.Application.Contracts;
 using Microsoft.AspNetCore.Authorization;
+using static Giftshop.Application.Constants;
 
 namespace Giftshop.Application.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = AdministratorRole)]
     public class ShoppingCartProductsController : Controller
     {
         private readonly IShoppingCartProductsService _service;

@@ -6,10 +6,11 @@ using Giftshop.Application.Contracts;
 using Giftshop.Application.Services;
 using Giftshop.Application.Contracts.Models;
 using Microsoft.AspNetCore.Authorization;
+using static Giftshop.Application.Constants;
 
 namespace Giftshop.Application.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = AdministratorRole)]
     public class CategoriesController : Controller
     {
         private readonly ICategoriesService _service;

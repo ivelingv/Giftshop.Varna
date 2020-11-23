@@ -8,11 +8,15 @@ using Giftshop.Application.Contracts;
 using Microsoft.AspNetCore.Http;
 using Giftshop.Application.Contracts.Models;
 
+using static Giftshop.Application.Constants;
+using static Giftshop.Application.Constants.Controllers;
+
 namespace Giftshop.Application.Controllers
 {
     [Authorize]
     public class HomeController : Controller
     {
+        
         private readonly ILogger<HomeController> _logger;
         private readonly ITokenService _tokenService;
 
@@ -27,9 +31,9 @@ namespace Giftshop.Application.Controllers
         public IActionResult LoginAdministrator()
         {
             if (HttpContext.User.Identity.IsAuthenticated 
-                && HttpContext.User.IsInRole("Administrator"))
+                && HttpContext.User.IsInRole(AdministratorRole))
             {
-                return RedirectToAction(nameof(Index), "ShoppingCarts");
+                return RedirectToAction(nameof(Index), ShoppingCards);
             }
 
             return View();
@@ -40,9 +44,9 @@ namespace Giftshop.Application.Controllers
         public IActionResult LoginCustomer()
         {
             if (HttpContext.User.Identity.IsAuthenticated 
-                && HttpContext.User.IsInRole("Client"))
+                && HttpContext.User.IsInRole(CustomerRole))
             {
-                return RedirectToAction(nameof(Index), "ShoppingCarts");
+                return RedirectToAction(nameof(Index), ShoppingCards);
             }
 
             return View();
@@ -73,7 +77,7 @@ namespace Giftshop.Application.Controllers
 
             if (result.Token != null)
             {
-                Response.Cookies.Append("AuthCookie", result.Token, new CookieOptions
+                Response.Cookies.Append(AuthCookie, result.Token, new CookieOptions
                 {
                     HttpOnly = true,
                     SameSite = SameSiteMode.Lax,
@@ -81,7 +85,7 @@ namespace Giftshop.Application.Controllers
                     Expires = DateTime.Now.AddHours(1),
                 });
 
-                return RedirectToAction(nameof(Index), "ShoppingCarts");
+                return RedirectToAction(nameof(Index), ShoppingCards);
             }
 
             return View();
@@ -90,8 +94,8 @@ namespace Giftshop.Application.Controllers
         [HttpGet]
         public IActionResult Logout()
         {
-            Response.Cookies.Delete("AuthCookie");
-            if (!User.IsInRole("Client"))
+            Response.Cookies.Delete(AuthCookie);
+            if (!User.IsInRole(CustomerRole))
             {
                 return RedirectToAction(nameof(LoginAdministrator));
             }
@@ -113,11 +117,11 @@ namespace Giftshop.Application.Controllers
 
             if (result?.Token == null)
             {
-                ModelState.AddModelError("", "Invalid Username or Password");
+                ModelState.AddModelError(string.Empty, InvalidUserError);
                 return View();
             }
 
-            Response.Cookies.Append("AuthCookie", result.Token, new CookieOptions
+            Response.Cookies.Append(AuthCookie, result.Token, new CookieOptions
             {
                 HttpOnly = true,
                 SameSite = SameSiteMode.Lax,
@@ -125,7 +129,7 @@ namespace Giftshop.Application.Controllers
                 Expires = DateTime.Now.AddHours(1),
             });
 
-            return RedirectToAction(nameof(Index), "ShoppingCarts");   
+            return RedirectToAction(nameof(Index), ShoppingCards);   
         }
 
         [HttpPost]
@@ -141,11 +145,11 @@ namespace Giftshop.Application.Controllers
 
             if (result?.Token == null)
             {
-                ModelState.AddModelError("", "Invalid Username or Password");
+                ModelState.AddModelError(string.Empty, InvalidUserError);
                 return View();
             }
 
-            Response.Cookies.Append("AuthCookie", result.Token, new CookieOptions
+            Response.Cookies.Append(AuthCookie, result.Token, new CookieOptions
             {
                 HttpOnly = true,
                 SameSite = SameSiteMode.Lax,
@@ -153,7 +157,7 @@ namespace Giftshop.Application.Controllers
                 Expires = DateTime.Now.AddHours(1),
             });
 
-            return RedirectToAction(nameof(Index), "ShoppingCarts");
+            return RedirectToAction(nameof(Index), ShoppingCards);
         }
     }
 }

@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Giftshop.Application.Models;
 using System.Linq;
 using Giftshop.Application.Contracts;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using Giftshop.Application.Models.Enumerations;
 using Microsoft.AspNetCore.Authorization;
+using static Giftshop.Application.Constants;
 
 namespace Giftshop.Application.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = AdministratorRole)]
     public class UsersController : Controller
     {
         private readonly IUsersService service;
