@@ -20,7 +20,7 @@ namespace Giftshop.Application.Extensions
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=LoginCustomer}/{id?}");
+                    pattern: "{controller=Catalogue}/{action=Index}/{id?}");
             });
         
             return app;

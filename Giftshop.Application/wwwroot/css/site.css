@@ -46,6 +46,10 @@ html {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
+.card {
+    box-shadow: 0 .35rem .85rem rgba(148, 151, 154, 1);
+}
+
 button.accept-policy {
   font-size: 1rem;
   line-height: inherit;

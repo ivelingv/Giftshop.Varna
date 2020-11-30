@@ -1,4 +1,5 @@
 ﻿using Giftshop.Application.Models.Enumerations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -7,6 +8,9 @@ namespace Giftshop.Application.Models
 {
     public class ShoppingCartViewModel : ViewModel
     {
+        [DisplayName("Date Created")]
+        public DateTime CreateDate { get; set; }
+
         [DisplayName("Total Amount")]
         [Required]
         [Range(0.01, double.PositiveInfinity)]

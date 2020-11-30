@@ -1,0 +1,66 @@
+﻿@model Giftshop.Application.Models.OrderHistoryViewModel
+
+@{
+    ViewData["Title"] = "CheckoutDetails";
+}
+@if (Model.Products.Any())
+{
+    <div class="card">
+        <div class="card-body">
+            <div class="card-columns">
+                @foreach (var product in Model.Products)
+                {
+                    <div class="card mt-3 mb-4">
+                        <div class="card-body text-center">@product.Product.Description</div>
+                        <div class="card-footer">@($"{product.Quantity} x {product.Price} {product.Currency}")</div>
+                    </div>
+                }
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.Comment))
+                    {
+                        <div class="row ml-5 mr-5">
+                            <div class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Comment)
+                            </div>
+                            <div class="col-sm-8">
+                                @Html.DisplayFor(model => model.Comment)
+                            </div>
+                        </div>
+                    }
+                    <div class="row ml-5 mr-5">
+                        <div class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.PaymentMethod)
+                        </div>
+                        <div class="col-sm-8">
+                            @Html.DisplayFor(model => model.PaymentMethod)
+                        </div>
+                    </div>
+                    <div class="row ml-5 mr-5">
+                        <div class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.DeliveryAddress)
+                        </div>
+                        <div class="col-sm-8">
+                            @Html.DisplayFor(model => model.DeliveryAddress.Description)
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row ml-5 mr-5">
+                        <div class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.TotalPrice)
+                        </div>
+                        <div class="col-sm-8">
+                            @($"{Model.TotalPrice} {Model.Currency}")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-info float-right">Order</button>
+            <button class="btn btn-danger float-right mr-2" onclick="rejectOrder()">Reject</button>
+        </div>
+    </div>
+}

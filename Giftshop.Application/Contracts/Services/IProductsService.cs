@@ -12,6 +12,9 @@ namespace Giftshop.Application.Contracts
         [Get("/api/Products/GetAll")]
         Task<IEnumerable<ProductModel>> GetAllAsync();
 
+        [Get("/api/Products/GetProducts")]
+        Task<IEnumerable<ProductModel>> GetProducts();
+
         [Get("/api/Products/Get/{id}")]
         Task<ProductModel> GetAsync([FromRoute] long id);
 

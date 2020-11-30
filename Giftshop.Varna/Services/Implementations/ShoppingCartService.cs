@@ -1,5 +1,6 @@
 ﻿using Giftshop.Varna.Database.Models;
 using Giftshop.Varna.Database.Repositories;
+using System.Collections.Generic;
 
 namespace Giftshop.Varna.Services
 {
@@ -9,6 +10,11 @@ namespace Giftshop.Varna.Services
             : base(repository)
         {
             
+        }
+
+        public IEnumerable<ShoppingCart> GetCartsByUserId(long userId)
+        {
+            return Repository.GetCartsByUserId(userId);
         }
     }
 }

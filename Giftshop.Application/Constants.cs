@@ -11,6 +11,7 @@
         public static class Controllers
         {
             public const string ShoppingCarts = "ShoppingCarts";
+            public const string Catalogue = "Catalogue";
         }
     }
 }

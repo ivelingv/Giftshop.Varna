@@ -46,7 +46,7 @@ namespace Giftshop.Application.Controllers
             if (HttpContext.User.Identity.IsAuthenticated 
                 && HttpContext.User.IsInRole(CustomerRole))
             {
-                return RedirectToAction(nameof(Index), ShoppingCarts);
+                return RedirectToAction(nameof(Index), Catalogue);
             }
 
             return View();
@@ -129,7 +129,7 @@ namespace Giftshop.Application.Controllers
                 Expires = DateTime.Now.AddHours(1),
             });
 
-            return RedirectToAction(nameof(Index), ShoppingCarts);   
+            return RedirectToAction(nameof(Index), Catalogue);   
         }
 
         [HttpPost]

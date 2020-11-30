@@ -24,6 +24,15 @@ namespace Giftshop.Varna.Controllers
             return Ok(products);
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("GetProducts")]
+        public IActionResult GetProducts()
+        {
+            var products = Service.Get();
+            return Ok(products);
+        }
+
         [HttpDelete]
         [Route("Delete/{id}")]
         [Authorize(Roles = "Administrator")]

@@ -22,5 +22,8 @@ namespace Giftshop.Application.Contracts
 
         [Delete("/api/ShoppingCart/Delete/{id}")]
         Task<ShoppingCartModel> DeleteAsync([FromRoute] long id);
+
+        [Get("/api/ShoppingCart/GetUserOrders")]
+        Task<IEnumerable<ShoppingCartModel>> GetUserOrdersAsync([FromQuery] long userId);
     }
 }

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Giftshop.Application.Models.ProductViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    var groups = Model.GroupBy(e => e.CategoryId)
+        .ToDictionary(e => e.Key, e => e.ToList());
+}
+@foreach (var group in groups)
+{
+    <div class="card-group">
+        @group.Key
+        <div class="card-columns">
+            @foreach (var product in group.Value)
+            {
+                <div class="card mr-3 ml-3 mt-3">
+                    <div class="card-img-top">
+                        <img class="card-img" src="@product.Image" />
+                    </div>
+                    <div class="card-body">
+                        <h3>@product.Title</h3>
+                        <p>@product.Description</p>
+                    </div>
+                    <div class="card-footer" style="height:60px">
+                        <h4 class="float-left">@(product.Price + " " + product.Currency)</h4>
+                        <input type="hidden" asp-for="@product.Id" />
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <button class="btn btn-info float-right" onclick="handleOrderButton($(this))">Order</button>
+                        }
+                        else
+                        {
+                            <a asp-controller="Home" asp-action="LoginCustomer" class="btn btn-info float-right">Order</a>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

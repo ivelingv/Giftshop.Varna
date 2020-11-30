@@ -36,6 +36,7 @@ namespace Giftshop.Application.Controllers
                 .Select(record => new ShoppingCartViewModel
                 {
                     Id = record.Id,
+                    CreateDate = record.CreateDate,
                     Status = record.Status,
                     PaymentMethod = record.PaymentMethod,
                     DeliveryAddressId = record.DeliveryAddressId,
@@ -58,6 +59,7 @@ namespace Giftshop.Application.Controllers
             {
                 Id = record.Id,
                 Status = record.Status,
+                CreateDate = record.CreateDate,
                 PaymentMethod = record.PaymentMethod,
                 DeliveryAddress = new CommonViewModel { Id = addresses.Id, Description = addresses.ToString() },
                 User = new CommonViewModel { Id = user.Id, Description = user.Name },
@@ -78,6 +80,7 @@ namespace Giftshop.Application.Controllers
             {
                 Id = record.Id,
                 Status = record.Status,
+                CreateDate = record.CreateDate,
                 PaymentMethod = record.PaymentMethod,
                 DeliveryAddressId = record.DeliveryAddressId,
                 Comment = record.Comment,

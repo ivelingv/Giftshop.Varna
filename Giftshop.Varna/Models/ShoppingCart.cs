@@ -1,4 +1,6 @@
-﻿namespace Giftshop.Varna.Models
+﻿using System;
+
+namespace Giftshop.Varna.Models
 {
     public class ShoppingCartModel : UxModel
     {

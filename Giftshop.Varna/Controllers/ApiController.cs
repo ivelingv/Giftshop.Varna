@@ -46,7 +46,6 @@ namespace Giftshop.Varna.Controllers
 
         [HttpPatch]
         [Route("Update/{id}")]
-        [Authorize(Roles = "Administrator")]
         public virtual IActionResult Update([FromRoute][Required] long id, [Required] TUxModel model)
         {
             var entity = Convert(model);
@@ -56,7 +55,6 @@ namespace Giftshop.Varna.Controllers
 
         [HttpPost]
         [Route(nameof(Create))]
-        [Authorize(Roles = "Administrator")]
         public virtual IActionResult Create([FromBody][Required] TUxModel model)
         {
             var entity = Convert(model);
@@ -67,7 +65,6 @@ namespace Giftshop.Varna.Controllers
 
         [HttpDelete]
         [Route("Delete/{id}")]
-        [Authorize(Roles = "Administrator")]
         public virtual IActionResult Delete([FromRoute][Required] long id)
         {
             return Ok();

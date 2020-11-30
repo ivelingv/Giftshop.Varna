@@ -24,7 +24,7 @@ namespace Giftshop.Varna.Controllers
 
         [HttpPost]
         [Route(nameof(Create))]
-        [Authorize(Roles ="Administrator, Clinet")]
+        [Authorize(Roles ="Administrator, Client")]
         public override IActionResult Create([FromBody, Required] ShoppingCartProductModel model)
         {
             return base.Create(model);
@@ -32,7 +32,7 @@ namespace Giftshop.Varna.Controllers
 
         [HttpGet]
         [Route("GetByShoppingCart/{shoppingCartId}")]
-        [Authorize(Roles = "Administrator, Clinet")]
+        [Authorize(Roles = "Administrator, Client")]
         public IActionResult GetByShoppingCart(long shoppingCartId)
         {
             var products = Service.GetByShoppingCart(shoppingCartId);
@@ -41,7 +41,7 @@ namespace Giftshop.Varna.Controllers
 
         [HttpPatch]
         [Route("Update/{id}")]
-        [Authorize(Roles = "Administrator, Clinet")]
+        [Authorize(Roles = "Administrator, Client")]
         public override IActionResult Update([FromRoute, Required] long id, [Required] ShoppingCartProductModel model)
         {
             return base.Update(id, model);
